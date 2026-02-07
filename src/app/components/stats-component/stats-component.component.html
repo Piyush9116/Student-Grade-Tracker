@@ -1,0 +1,20 @@
+<div class="stats-container">
+
+  <h3>Class Statistics</h3>
+
+  <div class="stat-item">
+    <strong>Total Students:</strong>
+    {{ totalStudents }}
+  </div>
+
+  <div class="stat-item">
+    <strong>Class Average:</strong>
+    {{ classAverage | number:'1.1-2' }}
+  </div>
+
+  <div class="stat-item" *ngIf="topperName">
+    <strong>Top Performer:</strong>
+    {{ topperName }} ({{ topperScore | number:'1.1-2' }})
+  </div>
+
+</div>

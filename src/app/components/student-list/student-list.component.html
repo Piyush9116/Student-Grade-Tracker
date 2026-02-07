@@ -1,0 +1,48 @@
+<section class="student-list">
+
+  <div class="students-section">
+    <h2>Students</h2>
+
+    <!-- Filter Buttons -->
+    <div class="filters">
+      <button (click)="setFilter('All')">All</button>
+      <button (click)="setFilter('Excellent')">Excellent</button>
+      <button (click)="setFilter('Good')">Good</button>
+      <button (click)="setFilter('Average')">Average</button>
+      <button (click)="setFilter('Poor')">Poor</button>
+    </div>
+
+    <!-- No Students Message -->
+    <p *ngIf="students.length === 0">
+      No students available. Please add students.
+    </p>
+
+    <div class="student-grid">
+      <div *ngIf="students.length > 0">
+        <app-student-card *ngFor="
+        let student of students | filterByPerformance:selectedFilter;
+          trackBy: trackByStudentId"
+          (viewDetails)="openStudentDetails($event)"
+          [student]="student"
+          (deleteStudent)="onDeleteStudent($event)">
+        </app-student-card>
+
+        <app-student-details *ngIf="selectedStudentForPopup"
+          [student]="selectedStudentForPopup"
+          (close)="closePopup()">
+        </app-student-details>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- Student Cards -->
+
+
+  <div class="add-student-wrapper">
+    <app-add-student></app-add-student>
+  </div>
+
+</section>

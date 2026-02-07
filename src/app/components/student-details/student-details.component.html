@@ -1,0 +1,57 @@
+<div class="popup-backdrop">
+  <div class="popup">
+
+    <h3>{{ student.name }} - Details</h3>
+
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <p>
+      <strong>Enrollment Date:</strong>
+      {{ student.enrollmentDate | date:'mediumDate' }}
+    </p>
+
+    <hr />
+
+    <h4>Grades</h4>
+
+    <div *ngIf="student.grades.length === 0">
+      No grades added yet.
+    </div>
+
+    <div *ngFor="let grade of student.grades">
+      <span><strong>{{ grade.subject }}</strong>:</span>
+
+      <span [appGradeColor]="grade.score">
+        {{ grade.score }}
+        ({{ grade.score | letterGrade }})
+      </span>
+
+      <span class="date">
+        - {{ grade.date | date:'shortDate' }}
+      </span>
+    </div>
+
+    <hr />
+
+    <p>
+      <strong>Average:</strong>
+      <span [appGradeColor]="average">
+        {{ average | number:'1.1-2' }}
+        ({{ average | letterGrade }})
+      </span>
+    </p>
+
+    <p>
+      <strong>GPA:</strong>
+      <span [appGradeColor]="(student.grades | gpaCalculator) * 100">
+        {{ student.grades | gpaCalculator | number:'1.2-2' }} / 10.0
+      </span>
+    </p>
+    <app-grade-form
+        [student]="student"
+        (gradeAdded)="ngOnChanges()"></app-grade-form>
+    <button class="close-btn" (click)="closeDetails()">
+      Close
+    </button>
+
+  </div>
+</div>

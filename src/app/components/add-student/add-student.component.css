@@ -1,0 +1,51 @@
+.add-student {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #e5e7eb;
+}
+
+.add-student h2 {
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.error {
+  color: #f87171;
+  font-size: 11px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+}

@@ -1,0 +1,47 @@
+<div class="student-card">
+
+    <!-- Student Info -->
+    <div class="header">
+        <h3>{{ student.name }}</h3>
+        <button class="delete-btn" (click)="onDelete()">Delete</button>
+        <button (click)="openDetails()">View Details</button>
+
+    </div>
+
+    <p>Email: {{ student.email }}</p>
+
+
+    <!-- Average & Letter Grade -->
+    <div class="average-section">
+        <span [appGradeColor]="average" class="average-score">
+            Avg: {{ average | number:'1.2-2' }}
+        </span>
+
+        <span class="letter-grade">
+            ({{ average | letterGrade }})
+        </span>
+
+        <!-- Grade Icon -->
+        <span [ngSwitch]="average | letterGrade">
+            <span *ngSwitchCase="'A'">🏆</span>
+            <span *ngSwitchCase="'B'">👍</span>
+            <span *ngSwitchCase="'C'">🙂</span>
+            <span *ngSwitchCase="'D'">⚠️</span>
+            <span *ngSwitchDefault>❌</span>
+        </span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" [ngStyle]="{ width: (average > 100 ? 100 : average) + '%' }" [ngClass]="{
+        excellent: average >= 90,
+        good: average >= 80 && average < 90,
+        average: average >= 70 && average < 80,
+        poor: average < 70
+      }"></div>
+    </div>
+    
+
+</div>
+
+

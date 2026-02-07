@@ -1,0 +1,46 @@
+.student-list {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+}
+
+/* LEFT SECTION */
+.students-section {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.filters button {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filters button:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* STUDENT GRID */
+.student-grid > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* RIGHT SIDE FORM */
+.add-student-wrapper {
+  position: sticky;
+  top: 20px;
+}

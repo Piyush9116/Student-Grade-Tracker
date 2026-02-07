@@ -1,0 +1,31 @@
+<form #gradeForm="ngForm" (ngSubmit)="addGrade(gradeForm)" class="grade-form">
+
+  <h4>Add Grade</h4>
+
+  <!-- Subject -->
+  <input
+    type="text"
+    name="subject"
+    placeholder="Subject"
+    required
+    [(ngModel)]="subject"
+    #subjectRef="ngModel"
+  />
+
+  <!-- Score -->
+  <input
+    type="number"
+    name="score"
+    placeholder="Score"
+    required
+    min="0"
+    max="100"
+    [(ngModel)]="score"
+    #scoreRef="ngModel"
+  />
+
+  <button type="submit" [disabled]="gradeForm.invalid">
+    Add
+  </button>
+
+</form>

@@ -1,0 +1,62 @@
+<section class="add-student">
+  <h2>Add New Student</h2>
+
+  <form #studentForm="ngForm" (ngSubmit)="addStudent(studentForm)">
+
+    <!-- Name -->
+    <div class="form-group">
+      <label>Student Name</label>
+      <input type="text" name="name" required minlength="6" pattern="^[a-zA-Z ]+$" [(ngModel)]="name"
+        #nameRef="ngModel" />
+
+      <small class="error" *ngIf="nameRef.touched && nameRef.errors?.['required']">
+        Name is required
+      </small>
+
+      <small class="error" *ngIf="nameRef.touched && nameRef.errors?.['minlength']">
+        Name must be at least 3 characters
+      </small>
+
+      <small class="error" *ngIf="nameRef.touched && nameRef.errors?.['pattern']">
+        Name can contain only letters and spaces
+      </small>
+    </div>
+
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$"
+        [(ngModel)]="email" #emailRef="ngModel" />
+
+      <small class="error" *ngIf="emailRef.touched && emailRef.errors?.['required']">
+        Email is required
+      </small>
+
+      <small class="error" *ngIf="emailRef.touched && emailRef.errors?.['email']">
+        Invalid email format
+      </small>
+
+      <small class="error" *ngIf="emailRef.touched && emailRef.errors?.['pattern']">
+        Please enter a valid email address
+      </small>
+    </div>
+
+
+    <!-- Enrollment Date -->
+    <div class="form-group">
+      <label>Enrollment Date</label>
+      <input type="date" name="enrollmentDate" required [(ngModel)]="enrollmentDate" #dateRef="ngModel" />
+
+      <small class="error" *ngIf="dateRef.invalid && dateRef.touched">
+        Enrollment date is required
+      </small>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="studentForm.invalid">
+      Add Student
+    </button>
+
+  </form>
+</section>
